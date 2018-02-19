@@ -1,0 +1,91 @@
+.wrapper {
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-items:center;
+
+}
+
+.home {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 60%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+  "title title"
+  "code music";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 125px 125px;
+  grid-gap: 10px;
+  align-content: center;
+  justify-content: center;
+  @media screen and (max-width: 430px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 744px) {
+    grid-template-areas:
+    "title"
+    "code"
+    "music";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 125px);
+    grid-gap: 0;
+  }
+  &__title {
+    grid-area: title;
+    font-family: $poppins;
+    font-size: 3rem;
+    display: grid;
+    background-color: $primary;
+    text-align: center;
+    align-content: center;
+    @media screen and (max-width: 570px) {
+      font-size: 2.5rem;
+    }
+    @media screen and (max-width: 430px) {
+      font-size: 2rem;
+    }
+  }
+  &__code, &__music {
+    color: white;
+    font-family: $roboto;
+    font-size: 2.5rem;
+    text-align: center;
+    display: grid;
+    align-items: center;
+  }
+  &__code {
+    grid-area: code;
+    background-color: $secondary;
+
+    &__icon {
+      display: inline-block;
+    }
+    &__title {
+      display: inline-block;
+    }
+  }
+
+  &__music {
+    grid-area: music;
+    background-color: $tertiary;
+
+    &__icon {
+      display: inline-block;
+    }
+    &__title {
+      display: inline-block;
+    }
+  }
+  &__code:hover &__code__icon, &__music:hover &__music__icon {
+    animation-name: iconspin;
+    animation-duration: .5s;
+    animation-fillmode: forwards;
+    animation-timing-funciton: ease-out;
+  }  
+}
+
+  @keyframes iconspin {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+  }

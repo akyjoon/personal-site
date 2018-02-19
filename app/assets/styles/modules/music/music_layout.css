@@ -1,0 +1,76 @@
+.music {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 55px;
+
+  &__nav {
+    grid-column-start: 1;
+    grid-column-end: span 12;
+    display: flex;
+    flex-direction: row;
+    background-color: $secondary;
+    font-family: $roboto;
+    color: white;
+
+     &__logo, &__best-sellers, &__categories {
+      flex-basis: 150px;
+      align-self: center;
+    }
+  }
+
+  &__best-sellers {
+    margin-top: 2.5em;
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: span 10;
+    /* grid-template-columns: repeat(5, 1fr); */
+    /* grid-column-gap: 15px;
+    justify-items: center;
+    align-items: center; */
+    font-family: $poppins;
+
+    &__title, &__tracks {
+      grid-column-end: span 5;
+    }
+
+    &__title {
+      justify-self: center;
+    }
+
+    &__tracks {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 250px;
+      grid-column-gap: 15px;
+
+      
+      &__individual {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: grid;
+        grid-template-rows: 30px 180px 40px;
+
+        &__title {
+          margin-top: 5px;
+          margin-left: 5px;
+          height: auto;
+        }
+
+        &__player {
+          font-size: 4rem;
+          align-self: center;
+          justify-self: center;
+        }
+
+        &__cart {
+          margin-right: 15px;
+          display: block;
+          font-size: 1.5rem;
+          align-self: center;
+          justify-self: end;
+        }
+      }
+    }
+  }
+
+}
+
