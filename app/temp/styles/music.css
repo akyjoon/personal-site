@@ -428,6 +428,8 @@ a {
 }
 
 .music__best-sellers__tracks__individual__player {
+  background-color: transparent;
+  border: none;
   font-size: 4rem;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;

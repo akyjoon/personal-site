@@ -106,9 +106,10 @@
 	          return salesB - salesA;
 	        }
 	        bestSellers.map(function (track) {
-	          console.log(track);
+	          var refLink = '?ref=Joonique_Sound';
+	          // console.log(track)
 	          //get top 5 best sellers and inject HTML on each:
-	          _this2.bestSellingTracks.innerHTML += '\n            <div class="music__best-sellers__tracks__individual">\n            <h4 class="music__best-sellers__tracks__individual__title">' + track.item + '</h4>\n            <audio class="audio">\n              <source src="' + track.live_preview_url + '">\n            </audio>\n            <button class="music__best-sellers__tracks__individual__player">\n              <i class="far fa-play-circle music__best-sellers__tracks__individual__player__icon"></i>\n            </button>  \n  \n              <a href="' + track.url + '" class="music__best-sellers__tracks__individual__cart">\n              <i class="fas fa-shopping-cart music__best-sellers__tracks__individual__cart__icon"></i>\n              </a>\n          </div>';
+	          _this2.bestSellingTracks.innerHTML += '\n            <div class="music__best-sellers__tracks__individual">\n              <h4 class="music__best-sellers__tracks__individual__title">' + track.item + '</h4>\n              <audio class="audio">\n                <source src="' + track.live_preview_url + '">\n              </audio>\n              <button class="music__best-sellers__tracks__individual__player">\n                <i class="far fa-play-circle music__best-sellers__tracks__individual__player__icon"></i>\n              </button>  \n  \n              <a target="_blank" href="' + track.url + refLink + '" class="music__best-sellers__tracks__individual__cart">\n                <i class="fas fa-shopping-cart music__best-sellers__tracks__individual__cart__icon"></i>\n              </a>\n          </div>';
 	        });
 
 	        //sort by category
@@ -141,15 +142,20 @@
 	      //Best sellers are added dynamically and can't be accessed with normal addEventListener. Use e.target to reach the button:
 	      function (e) {
 	        var button = e.target;
-	        if (button.className === 'music__best-sellers__tracks__individual__player') {
+	        // console.log(e.target)
+	        var playIcon = e.target.firstElementChild;
+
+	        if (button.className.includes('music__best-sellers__tracks__individual__player')) {
 	          //target audio element which is a sibling of the button:
 	          var aud = e.target.previousElementSibling;
 	          if (aud.paused) {
 	            aud.play();
-	            // button.classList.toggle("pause")
+	            playIcon.classList.add('fa-pause-circle');
+	            playIcon.classList.remove('fa-play-circle');
 	          } else {
 	            aud.pause();
-	            // button.classList.toggle("play")
+	            playIcon.classList.remove('fa-pause-circle');
+	            playIcon.classList.add('fa-play-circle');
 	          }
 	        } else {
 	          console.log('err');
